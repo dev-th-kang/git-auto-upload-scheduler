@@ -1,6 +1,6 @@
-set arg1 = %1
-git config --global --add safe.directory %arg1%
+@echo off
+cd %1
+git config --global --add safe.directory %1
 git add .
-git commit -m "autocommit!"
+git commit -m "autocommit test!"
 git push -u origin main
-pause

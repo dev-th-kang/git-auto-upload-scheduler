@@ -18,7 +18,7 @@ def crawling(user_id):
         html = response.text
         soup = BeautifulSoup(html, 'html.parser')
         commitData = soup.select("g>rect.ContributionCalendar-day")
-        commitCount = 0;
+        commitCount = 0
         todayUpdateInfo = False
         
         for c in commitData:
