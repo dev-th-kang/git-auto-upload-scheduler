@@ -21,7 +21,7 @@ def autoLoad():
 
 user_id = "dev-th-kang"
 #user_id = input("git_id : ")
-schedule.every(1).day.at("22:23").do(autoLoad)
+schedule.every(1).day.at("22:24").do(autoLoad)
 
 while True:
     schedule.run_pending()
