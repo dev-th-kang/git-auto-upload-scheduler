@@ -12,7 +12,6 @@ from autorun import autorun
 def autoLoad():
     if crawler.crawling(user_id) == False:
         autorun.autorun()
-        
     
 # 특정시간 실행
 
