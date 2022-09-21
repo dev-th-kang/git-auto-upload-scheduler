@@ -14,10 +14,11 @@ def autorun():
         if checkfolder.isfoldermodify(folerInfo[k]) == True:
             updateFolderList.append(folerInfo[k])
 
-    # 수정된 폴더 리스트       
+    # 수정된 폴더 리스트   
     for updatefolder in updateFolderList: 
         cmd = "autocommit.bat " + updatefolder
         os.system(cmd)
+    updateFolderList.clear()
 
     #cmd = "autocommit.bat " + folderData['1']
     #os.system(cmd)

@@ -4,24 +4,18 @@ import requests
 from bs4 import BeautifulSoup
 from datetime import datetime, timedelta
 import time
-from gitcrawler import crawler
+from crawler import gitcrawler
 from fmanagement import fmanagement
 from autorun import autorun
-#user_pw = getpass("git_pw : ")
 
 def autoLoad():
-    if crawler.crawling(user_id) == False:
-        autorun.autorun()
+    if gitcrawler.crawling(user_id) == False:
+        #autorun.autorun()
+        print("notcrawling")
     
-# 특정시간 실행
-
-# 초기set
-#fmanagement.fmanagement()
-#autoLoad()
-
 user_id = "dev-th-kang"
-#user_id = input("git_id : ")
-schedule.every(1).day.at("22:24").do(autoLoad)
+timeCycleStandard = "22:42"
+schedule.every(1).day.at(timeCycleStandard).do(autoLoad)
 
 while True:
     schedule.run_pending()

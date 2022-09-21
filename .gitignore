@@ -3,3 +3,4 @@ __pycache__
 # 실험 파일
 test.py
 test.*
+autorun copy*
