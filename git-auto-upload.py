@@ -17,10 +17,11 @@ def autoLoad():
 
 # 초기set
 #fmanagement.fmanagement()
+#autoLoad()
 
-#user_id = input("git_id : ")
 user_id = "dev-th-kang"
-schedule.every(1).day.at("21:58").do(autoLoad)
+#user_id = input("git_id : ")
+schedule.every(1).day.at("22:23").do(autoLoad)
 
 while True:
     schedule.run_pending()
