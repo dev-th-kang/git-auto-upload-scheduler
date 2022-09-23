@@ -1,14 +1,15 @@
 import subprocess
 import os
 
-def isfoldermodify(folder):
+def is_mod_project(folder):
     curPath = os.getcwd()
     os.chdir(folder)
+    
     data = subprocess.check_output(['git', 'diff'])
-
-    cmdInfo = str(data).split('\\n')
+    cmdContent = str(data).split('\\n')
     isModify = False
-    for cmd in cmdInfo:
+    for cmd in cmdContent:
+        #TODO: +++가 포함되면 업데이트된 정보가 있는것
         check = '+++' in cmd
         if check == True:
             isModify = True
@@ -17,4 +18,3 @@ def isfoldermodify(folder):
     os.chdir(curPath)
     return  isModify
 
-#ismodify('D:\Progamming\project\git-auto-upload-scheduler')

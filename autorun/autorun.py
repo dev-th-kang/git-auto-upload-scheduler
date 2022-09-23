@@ -1,26 +1,22 @@
 import os
 import json
-from fmanagement import checkfolder
-from fmanagement import fmanagement
+from projectmanger import projectModify
+from projectmanger import folderManger
 
 updateFolderList = list()
 def autorun(): 
-    json_data = fmanagement.readjson()
+    json_data = folderManger.readjson()
     folerKeys = json_data['folder'].keys()
     folerInfo = json_data['folder']
 
 
     for k in folerKeys:
-        if checkfolder.isfoldermodify(folerInfo[k]) == True:
+        if projectModify.is_mod_project(folerInfo[k]) == True:
             updateFolderList.append(folerInfo[k])
 
     # 수정된 폴더 리스트   
     for updatefolder in updateFolderList: 
         cmd = "autocommit.bat " + updatefolder
         os.system(cmd)
+    
     updateFolderList.clear()
-
-    #cmd = "autocommit.bat " + folderData['1']
-    #os.system(cmd)
-
-#autorun()

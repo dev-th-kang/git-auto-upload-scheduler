@@ -16,12 +16,13 @@ def crawling(user_id):
     if response.status_code == 200 :
         html = response.text
         soup = BeautifulSoup(html, 'html.parser')
-        commitData = soup.select("g>rect.ContributionCalendar-day")
+        commitContents = soup.select("g>rect.ContributionCalendar-day")
         commitCount = 0
         todayUpdateInfo = False
-
-        for c in commitData:
+        commitData = dict()
+        for c in commitContents:
             if str(c["data-date"]) == nowDate:
+                {}
                 commitCount = c["data-count"]
                 todayUpdateInfo = True
                 break

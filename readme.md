@@ -1,40 +1,28 @@
-# git-auto-upload-scheduler
+# git-auto uploader
 
-> 업무에 집중하며, 당일 작업한양을 커밋을 못할 경우를 대비해서 수정되거나 만들어진 프로젝트가 있다면, 자동으로 커밋!
-
-
-## plan
-
-* 2022-09-16
-  * 일정시간 (오후 11시45분으로 예상) 시 코드실행
-    * **[func1](./gitcrawler/crawler.py)** - beautifulsoup4의 crawling기능을 통해서 사용자의 당일 커밋여부 확인
-
-    * **[func2](./fmanagement/checkfolder.py)** - 프로젝트 진행 중인 폴더에서 수정된 내용이 있는지 확인(python 모듈을 활용할지, git diff 기능을 활용할지는 미정)
-
-
-    * func1, func2가 만족한다면, upload 기능 실행
-      * 최초 실행 시, 깃허브 로그인 요구됨
-      * git push 작업 수행
-  
-  * 현재 func1 1차 제작완료
- 
-* 2022-09-17 
-    * bat 파일로 자동으로 되는지 실험
-    * 프로젝트 폴더 데이터 저장 bat파일로 인자값 넘길 수 있는지 체크 해봐야함
-    * 폴더목록을 json 형태로 저장 
-    * 각 기능별로 분리, 폴더 분리
-
-
-* 2022-09-20
-    * bat 파일 자동 실행되게 완료
-    * os.system 을 사용해서 명령어 진행
-    * bat파일로 인자값 넘길 수 있음. 넘겨진 인자값으로 올릴 프로젝트 파일명을 넘김
-    * 수정 여부 판단할 수 있는거랑, 초기에 올릴 때, branch 설정값에 따라 커밋되는 형태 재구성해야함
-
-> 1차적 테스트 성공 시간에 맞게 자동크롤링됨. / 나머지 만든 모듈 연결해서 자동 크롤링 되게 재구성
-
-
-* 2022-09-22
-    * 지정 프로젝트 폴더중 수정여부 판단하는 함수 구현 완료
-    * 수정된프로젝트 폴더에 한해서 자동 업로드 진행
-    * 로그 남기는 기능 추가하면 좋을 것 같음
+```
+D:.
+|   .gitignore
+|   app.py
+|   autocommit.bat
+|   config.ini
+|   git-auto-upload.py
+|   README.md
+|   test.py
+|   updateList.md
+|
++---autorun
+|   └─  autorun copy.py
+|   └─   autoRun.py
+|
++---crawler
+|   └─   gitCrawler.py
+|
++---data
+|    └─  commitdata.json
+|    └─  folderinfo.json
+|
+\---projectmanger
+    └─  folderManger.py
+    └─  projectModify.py
+```

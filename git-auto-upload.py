@@ -4,18 +4,20 @@ import requests
 from bs4 import BeautifulSoup
 from datetime import datetime, timedelta
 import time
-from crawler import gitcrawler
-from fmanagement import fmanagement
-from autorun import autorun
+import configparser
+from crawler import gitCrawler
+from autorun import autoRun
+
+#TODO: read config.ini 
+config = configparser.ConfigParser()
+config.readfp(open('config.ini'))
 
 def autoLoad():
-    if gitcrawler.crawling(user_id) == False:
-        #autorun.autorun()
+    if gitCrawler.crawling(config["GIT_INFO"]["userName"]) == False:
+        autoRun.autorun()
         print("notcrawling")
-    
-user_id = "dev-th-kang"
-timeCycleStandard = "22:42"
-schedule.every(1).day.at(timeCycleStandard).do(autoLoad)
+
+schedule.every(1).day.at(config["AUTORUN_SETTING"]["timeCycle"]).do(autoLoad)
 
 while True:
     schedule.run_pending()
