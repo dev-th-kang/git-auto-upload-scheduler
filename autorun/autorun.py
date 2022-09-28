@@ -5,7 +5,7 @@ from projectmanger import folderManger
 
 updateFolderList = list()
 def autorun(): 
-    json_data = folderManger.readjson()
+    json_data = folderManger.readjson('./data/folderinfo.json')
     folerKeys = json_data['folder'].keys()
     folerInfo = json_data['folder']
 
